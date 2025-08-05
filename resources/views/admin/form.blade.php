@@ -1,53 +1,72 @@
 @extends('layout.main')
-@section('title', 'Welcome to Baherindo Motor')
+@section('title', 'Admin Panel - Baherindo Motor')
 @section('content')
 
+<section class="pt-32 pb-24 bg-black min-h-screen">
+    <div class="max-w-4xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16 hero-fade">
+            <h1 class="text-5xl md:text-6xl font-light mb-6 tracking-tight">
+                Admin Panel
+            </h1>
+            <p class="text-xl font-light text-gray-400">
+                Manage motorcycle inventory
+            </p>
+        </div>
 
-<section class="mt-20 py-10 px-6">
-    <div class="text-center mb-8">
-        <h1 class="text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500 mb-2">
-            Tambah Motor
-        </h1>
-        <p class="text-xl text-purple-300 font-medium">
-            Baherindo Motor
-        </p>
+        <!-- Form -->
+        <div class="bg-white text-black p-12 hero-fade">
+            <form class="space-y-12">
+                <!-- Motor Name -->
+                <div>
+                    <input type="text" 
+                           name="nama_motor" 
+                           id="nama_motor" 
+                           placeholder="Motor Name"
+                           class="w-full border-b-2 border-gray-300 bg-transparent pb-4 text-2xl font-light focus:outline-none focus:border-black smooth-transition" 
+                           required />
+                </div>
+
+                <!-- Year -->
+                <div>
+                    <input type="number" 
+                           name="tahun_motor" 
+                           id="tahun_motor" 
+                           placeholder="Year"
+                           class="w-full border-b-2 border-gray-300 bg-transparent pb-4 text-2xl font-light focus:outline-none focus:border-black smooth-transition" 
+                           required />
+                </div>
+
+                <!-- Mileage -->
+                <div>
+                    <input type="number" 
+                           name="jumlah_km" 
+                           id="jumlah_km" 
+                           placeholder="Mileage (KM)"
+                           class="w-full border-b-2 border-gray-300 bg-transparent pb-4 text-2xl font-light focus:outline-none focus:border-black smooth-transition" 
+                           required />
+                </div>
+
+                <!-- Price -->
+                <div>
+                    <input type="number" 
+                           name="harga_motor" 
+                           id="harga_motor" 
+                           placeholder="Price (Rp)"
+                           class="w-full border-b-2 border-gray-300 bg-transparent pb-4 text-2xl font-light focus:outline-none focus:border-black smooth-transition" 
+                           required />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-12">
+                    <button type="submit" 
+                            class="w-full bg-black text-white py-6 text-sm font-medium tracking-wider uppercase hover:bg-gray-800 smooth-transition">
+                        Submit Data
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    
-<div class="pt-30">
-
-    <form class="max-w-4xl mx-auto">
-
-  <div class="relative z-0 w-full mb-5 group">
-    <input type="text" name="nama_motor" id="nama_motor" class="block py-2.5 px-0 w-full text-base text-white bg-transparent border-0 border-b-2 border-purple-500 appearance-none focus:outline-none focus:ring-0 focus:border-purple-400 peer" placeholder=" " required />
-    <label for="nama_motor" class="peer-focus:font-medium absolute text-sm text-purple-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Motor</label>
-  </div>
-
-  <div class="relative z-0 w-full mb-5 group">
-    <input type="number" name="tahun_motor" id="tahun_motor" class="block py-2.5 px-0 w-full text-base text-white bg-transparent border-0 border-b-2 border-purple-500 appearance-none focus:outline-none focus:ring-0 focus:border-purple-400 peer" placeholder=" " required />
-    <label for="tahun_motor" class="peer-focus:font-medium absolute text-sm text-purple-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"> Tahun Motor </label>
-  </div>
-
-  <div class="relative z-0 w-full mb-5 group">
-    <input type="number" name="jumlah_km" id="jumlah_km" class="block py-2.5 px-0 w-full text-base text-white bg-transparent border-0 border-b-2 border-purple-500 appearance-none focus:outline-none focus:ring-0 focus:border-purple-400 peer" placeholder=" " required />
-    <label for="jumlah_km"     class="peer-focus:font-medium absolute text-sm text-purple-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">   Jumlah KM </label>
-  </div>
-
-  <div class="relative z-0 w-full mb-5 group">
-    <input type="number" name="harga_motor" id="harga_motor" class="block py-2.5 px-0 w-full text-base text-white bg-transparent border-0 border-b-2 border-purple-500 appearance-none focus:outline-none focus:ring-0 focus:border-purple-400 peer" placeholder=" " required />
-    <label for="harga_motor" class="peer-focus:font-medium absolute text-sm text-purple-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-purple-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"> Harga Motor </label>
-  </div>
-
-  <button type="submit"class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-base w-full sm:w-auto px-6 py-2.5 text-center">Submit</button>
-
-</form>
-
-
-</div>
-
-
 </section>
-
-
 
 @endsection
