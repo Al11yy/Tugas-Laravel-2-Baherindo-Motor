@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Motor Details - Baherindo Motor')
+@section('title', $motor->nama_motor . ' - Baherindo Motor')
 @section('content')
 
 <section class="pt-32 pb-24 bg-black">
@@ -18,75 +18,77 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
             <!-- Image Section -->
             <div class="hero-fade">
-                <img class="w-full h-96 object-cover mb-8" 
-                     src="{{ asset('img/Nmax.png') }}" 
-                     alt="Motor Image" />
+                <img class="w-full h-fit object-cover mb-8" 
+                     src="{{ asset('storage/' . $motor->gambar_motor) }}" 
+                     alt="{{ $motor->nama_motor }}" />
                 
-                <!-- Thumbnail Gallery -->
-                <div class="grid grid-cols-4 gap-4">
-                    <img class="w-full h-20 object-cover border-2 border-white cursor-pointer" 
-                         src="{{ asset('img/Nmax.png') }}" 
-                         alt="Thumbnail" />
-                    <img class="w-full h-20 object-cover border border-gray-700 hover:border-white smooth-transition cursor-pointer" 
-                         src="{{ asset('img/Nmax.png') }}" 
-                         alt="Thumbnail" />
-                    <img class="w-full h-20 object-cover border border-gray-700 hover:border-white smooth-transition cursor-pointer" 
-                         src="{{ asset('img/Nmax.png') }}" 
-                         alt="Thumbnail" />
-                    <img class="w-full h-20 object-cover border border-gray-700 hover:border-white smooth-transition cursor-pointer" 
-                         src="{{ asset('img/Nmax.png') }}" 
-                         alt="Thumbnail" />
-                </div>
+
             </div>
 
             <!-- Details Section -->
             <div class="space-y-12 hero-fade">
                 <div>
                     <h1 class="text-5xl md:text-6xl font-light mb-6 tracking-tight">
-                        Yamaha NMAX 155
+                        {{ $motor->nama_motor }}
                     </h1>
                     <div class="text-3xl font-light text-gray-300 mb-12">
-                        Starting at Rp 25,000,000
+                        Starting at Rp {{ number_format($motor->harga_motor, 0, ',', '.') }}
                     </div>
                 </div>
                 
                 <!-- Specifications -->
                 <div class="grid grid-cols-2 gap-12">
                     <div>
-                        <div class="text-3xl font-light mb-2">2020</div>
+                        <div class="text-3xl font-light mb-2">{{ $motor->tahun_motor }}</div>
                         <div class="text-sm font-medium tracking-wide uppercase text-gray-500">Year</div>
                     </div>
                     <div>
-                        <div class="text-3xl font-light mb-2">15,000 km</div>
+                        <div class="text-3xl font-light mb-2">{{ number_format($motor->km_motor, 0, ',', '.') }} km</div>
                         <div class="text-sm font-medium tracking-wide uppercase text-gray-500">Mileage</div>
                     </div>
-                    <div>
-                        <div class="text-3xl font-light mb-2">Excellent</div>
-                        <div class="text-sm font-medium tracking-wide uppercase text-gray-500">Condition</div>
-                    </div>
-                    <div>
-                        <div class="text-3xl font-light mb-2">Automatic</div>
-                        <div class="text-sm font-medium tracking-wide uppercase text-gray-500">Transmission</div>
-                    </div>
+
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="space-y-4">
-                    <button class="w-full tesla-btn-primary py-4 text-sm font-medium tracking-wider">
-                        Order Now
-                    </button>
-                    <button class="w-full tesla-btn py-4 text-sm font-medium tracking-wider">
-                        Schedule Test Ride
-                    </button>
+                <!-- tombol WhatsApp -->
+                <div class="mb-4">
+                    <form action="">
+                        <button class="w-full tesla-btn-primary py-4 text-sm font-medium tracking-wider cursor-pointer smooth-transition">
+                            Order By WhatsApp
+                        </button>
+                    </form>
                 </div>
+
+
+                <div class="flex gap-4">
+                    <!-- tombol Edit -->
+
+                    <form action="" class="flex-1">
+                        <a href="{{ route('motor.edit', $motor->id) }}" 
+                        class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-4 text-sm font-medium tracking-wider rounded-lg cursor-pointer smooth-transition">
+                            Edit
+                        </a>
+                    </form>
+
+                    <!-- tombol Delete -->
+                    <form action="{{ route('motor.destroy', $motor->id) }}" method="POST" class="flex-1">
+                        @csrf
+                        @method('DELETE')
+                        <button class="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-sm font-medium tracking-wider rounded-lg cursor-pointer smooth-transition">
+                            Delete
+                        </button>
+                    </form>
+
+                </div>
+
 
                 <!-- Contact Info -->
                 <div class="border-t border-gray-800 pt-12">
                     <h3 class="text-xl font-light mb-6 tracking-tight">Contact</h3>
                     <div class="space-y-4 text-gray-400">
-                        <div>+62 812-3456-7890</div>
-                        <div>Baherindo Motor, Bekasi</div>
-                        <div>info@baherindomotor.com</div>
+                        <div>{{ $motor->kontak_motor ?? '+62 812-3456-7890' }}</div>
+                        <div>{{ $motor->lokasi_motor ?? 'Baherindo Motor, Bekasi' }}</div>
+                        <div>{{ $motor->email_motor ?? 'info@baherindomotor.com' }}</div>
                     </div>
                 </div>
             </div>
@@ -99,19 +101,7 @@
                     About This Model
                 </h2>
                 <div class="text-xl font-light leading-relaxed text-gray-400 space-y-6">
-                    <p>
-                        The 2020 Yamaha NMAX 155 represents the perfect fusion of urban mobility and cutting-edge technology. 
-                        Engineered for the modern rider, this premium scooter delivers exceptional performance while maintaining 
-                        the highest standards of reliability and efficiency.
-                    </p>
-                    <p>
-                        Featuring advanced Smart Key System, LED lighting technology, and a comprehensive digital display, 
-                        the NMAX 155 sets new benchmarks in the premium scooter segment. Every component has been meticulously 
-                        maintained at authorized service centers, ensuring optimal performance and longevity.
-                    </p>
-                    <p>
-                        Complete documentation included. Ready for immediate delivery with comprehensive warranty coverage.
-                    </p>
+                    {!! nl2br(e($motor->deskripsi_motor)) !!}
                 </div>
             </div>
         </div>

@@ -52,31 +52,52 @@ class MobilContoller extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
+{
+    $mobil = MobilBaherindo::find($id);
+    return view('mobil.show', compact('mobil'));
+}
+
+/**
+ * Show the form for editing the specified resource.
+ */
+public function edit(string $id)
+{
+    $mobil = MobilBaherindo::find($id);
+    return view('mobil.edit', compact('mobil'));
+}
+
+/**
+ * Update the specified resource in storage.
+ */
+public function update(Request $request, string $id)
+{
+    $mobil = MobilBaherindo::find($id);
+    $validatedData = $request->validate([
+        'nama_mobil' => 'required|string',
+        'harga_mobil' => 'required|numeric',
+        'tahun_mobil' => 'required|integer',
+        'km_mobil' => 'required|integer',
+        'gambar_mobil' => 'nullable|image|mimes:jpg,jpeg,png',
+    ]);
+
+    if ($request->hasFile('gambar_mobil')) {
+        $path = $request->file('gambar_mobil')->store('mobilbaherindoImage', 'public');
+        $validatedData['gambar_mobil'] = $path;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    $mobil->update($validatedData);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    return redirect('/home2')->with('success', 'Data mobil berhasil diupdate!');
+}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+/**
+ * Remove the specified resource from storage.
+ */
+public function destroy(string $id)
+{
+    $mobil = MobilBaherindo::find($id);
+    $mobil->delete();
+    return redirect('/home2')->with('success', 'Data mobil berhasil dihapus!');
+}
+
 }

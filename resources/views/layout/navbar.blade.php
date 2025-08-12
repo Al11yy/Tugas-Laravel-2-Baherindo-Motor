@@ -1,6 +1,6 @@
 <nav class="fixed top-0 w-full z-50 px-8 py-6">
     <div class="max-w-7xl mx-auto">
-        <div class="bg-black/80 backdrop-blur-xl border border-white/10 px-8 py-4">
+        <div class="bg-black/80 backdrop-blur-xl border border-white/10 px-8 py-4 rounded-4xl">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center">

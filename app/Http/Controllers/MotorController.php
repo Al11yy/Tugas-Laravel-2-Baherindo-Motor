@@ -55,7 +55,8 @@ class MotorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $motor = MotorBaherindo::find($id);
+        return view('motor.show',compact('motor'));
     }
 
     /**
@@ -63,7 +64,8 @@ class MotorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $motor = MotorBaherindo::find($id);
+        return view('motor.edit', compact('motor'));
     }
 
     /**
@@ -71,7 +73,23 @@ class MotorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $motor = MotorBaherindo::find($id);
+        $validatedData = $request->validate([
+        'nama_motor' => 'required|string',
+        'harga_motor' => 'required|numeric',
+        'tahun_motor' => 'required|integer',
+        'km_motor' => 'required|integer',
+        'gambar_motor' => 'nullable|image|mimes:jpg,jpeg,png',
+             ]);
+
+        if ($request->hasFile('gambar_motor')) {
+            $path = $request->file('gambar_motor')->store('motorbaherindoImage', 'public');
+            $validatedData['gambar_motor'] = $path;
+        } 
+
+        $motor->update($validatedData);
+
+        return redirect('/home')->with('success', 'Data motor berhasil diupdate!');
     }
 
     /**
@@ -79,6 +97,8 @@ class MotorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $motor = MotorBaherindo::find($id);
+        $motor->delete();
+        return redirect('/home')->with('success', 'Data motor berhasil dihapus!');
     }
 }

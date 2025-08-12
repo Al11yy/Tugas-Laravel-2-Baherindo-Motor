@@ -24,9 +24,13 @@
             <button class="tesla-btn-primary px-16 py-5 text-sm font-medium tracking-wider">
                 Explore Models
             </button>
-            <button class="tesla-btn px-16 py-5 text-sm font-medium tracking-wider">
+
+            <a href="/about">
+            <button class="tesla-btn px-16 py-5 text-sm font-medium tracking-wider cursor-pointer">
                 Our Story
             </button>
+            </a>
+
         </div>
     </div>
 
@@ -53,6 +57,7 @@
         <div class="space-y-24">
             @foreach ($motor as $index => $m)
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center {{ $index % 2 == 1 ? 'lg:grid-flow-col-dense' : '' }}">
+
                 <!-- Image -->
                 <div class="{{ $index % 2 == 1 ? 'lg:col-start-2' : '' }}">
                     <img class="w-full h-fit object-cover" 
@@ -85,17 +90,18 @@
 
                     <!-- Actions -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="tesla-btn-primary px-8 py-3 text-sm font-medium tracking-wider">
+                        <button class="tesla-btn-primary px-8 py-3 text-sm font-medium tracking-wider cursor-pointer">
                             Order Now
                         </button>
-                        <button class="tesla-btn px-8 py-3 text-sm font-medium tracking-wider">
+                        <a href="{{ route('motor.show', $m->id) }}"><button class="tesla-btn px-8 py-3 text-sm font-medium tracking-wider cursor-pointer">
                             Learn More
-                        </button>
+                        </button></a>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+        
     </div>
 </section>
 

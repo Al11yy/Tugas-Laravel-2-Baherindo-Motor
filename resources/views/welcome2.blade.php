@@ -21,12 +21,14 @@
             Accelerating the world's transition to sustainable urban mobility
         </p>
         <div class="flex flex-col sm:flex-row gap-8 justify-center">
-            <button class="tesla-btn-primary px-16 py-5 text-sm font-medium tracking-wider">
+            <a href="#car" class="tesla-btn-primary px-16 py-5 text-sm font-medium tracking-wider cursor-pointer scroll-smooth">
                 Explore Models
-            </button>
-            <button class="tesla-btn px-16 py-5 text-sm font-medium tracking-wider">
+            </a>
+            <a href="/about">
+            <button class="tesla-btn px-16 py-5 text-sm font-medium tracking-wider cursor-pointer">
                 Our Story
             </button>
+            </a>
         </div>
     </div>
 
@@ -38,7 +40,7 @@
 </section>
 
 <!-- Featured Models -->
-<section class="py-24 bg-black">
+<section class="py-24 bg-black" id="car">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-20">
             <h2 class="text-4xl md:text-6xl font-light mb-6 tracking-tight">
@@ -81,14 +83,16 @@
                         </div>
                     </div>
 
+
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="tesla-btn-primary px-8 py-3 text-sm font-medium tracking-wider">
+                        <button class="tesla-btn-primary px-8 py-3 text-sm font-medium tracking-wider cursor-pointer">
                             Order Now
                         </button>
-                        <button class="tesla-btn px-8 py-3 text-sm font-medium tracking-wider">
+                        <a href="{{ route('mobil.show', $m->id) }}"><button class="tesla-btn px-8 py-3 text-sm font-medium tracking-wider cursor-pointer">
                             Learn More
-                        </button>
+                        </button></a>
                     </div>
+
                 </div>
             </div>
             @endforeach
@@ -99,7 +103,7 @@
 <!-- Experience Section -->
 <section class="relative h-screen flex items-center justify-center">
     <div class="absolute inset-0 z-0">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yes.jpg-pAxikDuxPxxWCRSU3bSbqBEHN5vtYl.jpeg" 
+        <img src="{{ asset('img/bmw m4 bg anjay.png') }}"
              alt="Experience the Thrill - Baherindo Mobil" 
              class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/50"></div>
