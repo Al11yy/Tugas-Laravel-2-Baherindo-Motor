@@ -1,9 +1,10 @@
-# 🚀 Baherindo Motor — Web Dealer Motor Bekas
+<!-- Logo -->
+<p align="center">
+    <img src="public/img/logo.png" alt="Baherindo Motor Logo" width="160"/>
+</p>
 
-Selamat datang di repositori resmi **Baherindo Motor**!  
-Website ini adalah platform dealer motor bekas terpercaya, menyediakan informasi lengkap motor berkualitas, katalog produk, form pemesanan, dan kontak bisnis. Dibangun menggunakan **Laravel** dan **Tailwind CSS** untuk performa dan tampilan modern.
-
-![Banner](https://scontent-cgk2-2.cdninstagram.com/v/t51.2885-19/171764646_121869053299488_2208545503752327140_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45NDUuYzIifQ&_nc_ht=scontent-cgk2-2.cdninstagram.com&_nc_cat=100&_nc_oc=Q6cZ2QFbUZ7tMggfS9ufvJ8zw-V8LMhPDVUwZdIL_8QCyudAXJ5OQqFUUZcU1kjzGsBrYMo&_nc_ohc=BQR98cDsVcwQ7kNvwF7jyvE&_nc_gid=X_9ytJD5EHozdm7QflIWnQ&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfRkhE0lue-FeukooaCr8jFgQybfbEKTikyRcS79thlOug&oe=688E5FA8&_nc_sid=7a9f4b) <!-- opsional: ganti dengan banner web lo -->
+<h1 align="center">🚗 Baherindo Motor</h1>
+<p align="center">Dealer Motor & Mobil Bekas Berkualitas — Laravel + Tailwind CSS</p>
 
 ---
 
@@ -12,28 +13,39 @@ Website ini adalah platform dealer motor bekas terpercaya, menyediakan informasi
 - ⚙️ **Laravel 10+**
 - 🎨 **Tailwind CSS**
 - 🔄 Blade Templating Engine
-- 🧠 Responsive Design (Mobile-first)
-- 📦 Asset Management via Vite
+- 📱 Mobile-first Responsive Design
+- 📦 Asset bundling via **Vite**
 
 ---
 
 ## 📷 Fitur Utama
 
-- ✅ Halaman Home dengan highlight produk unggulan
-- 📸 Galeri motor bekas lengkap dengan gambar & harga
-- 🔍 Detail produk dengan spesifikasi & stok
-- 📝 Formulir pemesanan langsung (tanpa login)
-- 📞 Halaman Kontak dengan info lengkap
-- 🧾 Tentang Kami yang menjelaskan profil usaha
+- **Home Page** dengan hero video & highlight produk
+- **Katalog Produk** (Motor & Mobil) lengkap dengan gambar, harga, tahun, dan kilometer
+- **Detail Produk** untuk setiap kendaraan
+- **Form Pemesanan** langsung tanpa login
+- **Tentang Kami** & **Kontak**
 
 ---
 
 ## 🚀 Cara Menjalankan
 
 ```bash
+# 1️⃣ Clone repo
 git clone https://github.com/username/baherindo-motor.git
 cd baherindo-motor
+
+# 2️⃣ Install dependencies
 composer install
+npm install
+
+# 3️⃣ Konfigurasi environment
 cp .env.example .env
 php artisan key:generate
+
+# 4️⃣ Migrasi database
+php artisan migrate
+
+# 5️⃣ Jalankan server
 php artisan serve
+npm run dev
